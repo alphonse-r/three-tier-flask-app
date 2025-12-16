@@ -1,3 +1,8 @@
+.bash*
+.pro*
+.sudo*
+.vim*
+get-docker.sh
 __pycache__/
 *.py[cod]
 *.pyo
