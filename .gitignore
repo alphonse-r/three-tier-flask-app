@@ -1,3 +1,6 @@
+.cache
+.docker
+.ssh
 .bash*
 .pro*
 .sudo*
