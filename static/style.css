@@ -1,0 +1,73 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+    padding: 30px;
+}
+
+h2 {
+    color: #333;
+}
+
+.container {
+    background: white;
+    padding: 20px;
+    border-radius: 6px;
+    max-width: 600px;
+    margin: auto;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    padding: 8px;
+    width: 200px;
+    margin-right: 10px;
+}
+
+button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+}
+
+.btn-add {
+    background-color: #28a745; /* vert */
+}
+
+.btn-edit {
+    background-color: #007bff; /* bleu */
+}
+
+.btn-delete {
+    background-color: #dc3545; /* rouge */
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: #fafafa;
+    padding: 10px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 4px;
+}
+
+.actions {
+    display: flex;
+    gap: 5px;
+}
+
+.edit-form {
+    display: flex;
+    gap: 5px;
+}

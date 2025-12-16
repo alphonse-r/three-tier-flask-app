@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestion des personnes</title>
+
+    <!-- Charger le CSS depuis le dossier static -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <h2>Ajouter une personne</h2>
+
+    <form method="POST">
+        <input type="text" name="name" placeholder="Nom" required>
+        <button type="submit" class="btn-add">Ajouter</button>
+    </form>
+
+    <hr>
+
+    <h2>Liste des personnes</h2>
+
+    <ul>
+        {% for person in persons %}
+        <li>
+            <strong>{{ person[1] }}</strong>
+
+            <div class="actions">
+                <!-- Modifier -->
+                <form action="/edit/{{ person[0] }}" method="POST" class="edit-form">
+                    <input type="text" name="name" placeholder="Nouveau nom" required>
+                    <button type="submit" class="btn-edit">Modifier</button>
+                </form>
+
+                <!-- Supprimer -->
+                <a href="/delete/{{ person[0] }}">
+                    <button class="btn-delete">Supprimer</button>
+                </a>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+
+</div>
+
+</body>
+</html>

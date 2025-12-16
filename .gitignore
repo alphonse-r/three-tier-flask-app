@@ -1,0 +1,40 @@
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.pkl
+*.log
+*.sqlite3
+venv/
+env/
+.env
+
+# Flask / instance folder
+instance/
+*.db
+
+# Docker
+*.dockerignore
+docker-compose.override.yml
+*.env
+docker-compose.override.yml
+**/Dockerfile.*
+
+# Docker volumes
+mysql-data/
+jenkins_home/
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Others
+*.bak
+*.tmp

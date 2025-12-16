@@ -1,0 +1,4 @@
+flask==2.2.5
+#pymysql==1.0.3
+# ou si tu veux mysqlclient (plus "native"), remplace pymysql par mysqlclient
+mysqlclient==2.1.1

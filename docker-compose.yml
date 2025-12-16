@@ -1,0 +1,43 @@
+services:
+  mysql:
+    image: mariadb:lts-ubi9
+    container_name: mariadb
+    environment:
+      MYSQL_DATABASE: "devops"
+      MYSQL_USER: "flaskuser"
+      MYSQL_PASSWORD: "flaskpass"
+      MYSQL_ROOT_PASSWORD: "root" # root pour administration, pas pour Flask
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    restart: always
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uflaskuser", "-pflaskpass"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 60s
+
+  flask:
+    build: .
+    container_name: tree-tier-flask-app
+    ports:
+      - "5000:5000"
+    environment:
+      - DB_HOST=mysql
+      - DB_USER=flaskuser
+      - DB_PASSWORD=flaskpass
+      - DB_NAME=devops
+    depends_on:
+      - mysql
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 60s
+
+volumes:
+  mysql-data:
