@@ -1,7 +1,7 @@
 
 # Description du projet
 
-Ce projet est une application web minimale développée avec Flask et connectée à une base de données MariaDB sur une instance EC2 d'AWS.
+Ce projet est une application web minimale développée avec Flask comme backend et html, css et js comme frontend. Et connectée à une base de données MariaDB sur une instance EC2 d'AWS.
 
 L’application expose trois routes :
 
