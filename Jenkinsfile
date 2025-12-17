@@ -5,7 +5,7 @@ pipeline {
         stage('Clone Repository') {
             steps {
                 // My github repos
-                git branch: 'main', url: 'https://github.com/alphonse-r/two-tier-app.git'
+                git branch: 'main', url: 'https://github.com/alphonse-r/three-tier-flask-app.git'
             }
         }
 
