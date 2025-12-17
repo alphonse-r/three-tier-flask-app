@@ -513,7 +513,7 @@ Configure webhook comme suit :
 
 - Après un build réussi, votre application Flask sera accessible à l’adresse : **`http://<votre-ip-publique-EC2>:5000`**.
 - Vérifiez que les conteneurs sont bien en cours d’exécution sur l’instance EC2 avec la commande **docker ps**.
-![page-finale](images/page finale.png)
+![page finale](images/page finale.png)
 
 ## Pile technologique
 
