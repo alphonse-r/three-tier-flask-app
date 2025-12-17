@@ -1,6 +1,7 @@
 
 # Description du projet
 ![three-tier-web-app](images/three-tier-web-app.drawio.png)
+
 Ce projet est une application web Flask basée sur une architecture Three-Tier, conçue pour démontrer la mise en œuvre de bonnes pratiques DevOps, incluant la conteneurisation, l’orchestration et l’intégration continue / déploiement continu (CI/CD).
 
 L’application permet la gestion d’une liste de personnes (ajout, modification et suppression) via une interface web simple. Les données sont stockées de manière persistante dans une base de données relationnelle.
