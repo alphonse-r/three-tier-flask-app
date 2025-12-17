@@ -17,7 +17,7 @@ L’application expose trois routes :
 
 L’architecture de l’application est composée de trois couches distinctes :
 
-### Presentation Tier
+### Presentation Tier
 
 - Interface web HTML/CSS/JavaScript
 
@@ -35,7 +35,7 @@ L’architecture de l’application est composée de trois couches distinctes :
 
 - Données persistées via un volume Docker
 
-L'application est mise en prod dans une instance EC2.
+### L'application est mise en prod dans une instance AWS EC2.
 
 # Etape 1: Préparation de l'instance EC2
 
