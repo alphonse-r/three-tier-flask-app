@@ -1,7 +1,9 @@
 
 # Description du projet
 
-Ce projet est une application web minimale développée avec Flask comme backend et html, css et js comme frontend. Et connectée à une base de données MariaDB sur une instance EC2 d'AWS.
+Ce projet est une application web Flask basée sur une architecture Three-Tier, conçue pour démontrer la mise en œuvre de bonnes pratiques DevOps, incluant la conteneurisation, l’orchestration et l’intégration continue / déploiement continu (CI/CD).
+
+L’application permet la gestion d’une liste de personnes (ajout, modification et suppression) via une interface web simple. Les données sont stockées de manière persistante dans une base de données relationnelle.
 
 L’application expose trois routes :
 
@@ -11,9 +13,29 @@ L’application expose trois routes :
 
 `*/health` -> Vérifie l'état de santé de l'app (utile pour Docker, docker-compose)
 
-L’objectif est également d’apprendre à containeriser, déployer et orchestrer une application complète en utilisant Docker (Dockerfile) et docker-compose.
+# Architecture Three-Tier
 
-Le projet inclut également un pipeline CI/CD avec Jenkins qui est déclenché automatiquement via Webhook GitHub.
+L’architecture de l’application est composée de trois couches distinctes :
+
+### Presentation Tier
+
+- Interface web HTML/CSS/JavaScript
+
+- Gérée par Flask et accessible via un navigateur
+
+### Application Tier
+
+- Application backend développée en Python (Flask)
+
+- Gère la logique métier et les interactions avec la base de données
+
+### Data Tier
+
+- Base de données MariaDB
+
+- Données persistées via un volume Docker
+
+L'application est mise en prod dans une instance EC2.
 
 # Etape 1: Préparation de l'instance EC2
 
