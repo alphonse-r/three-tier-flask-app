@@ -1,73 +1,89 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f6f8;
-    padding: 30px;
-}
-
-h2 {
-    color: #333;
+    background: #f0f0f0;
+    margin: 0;
+    padding: 20px;
 }
 
 .container {
-    background: white;
-    padding: 20px;
-    border-radius: 6px;
     max-width: 600px;
-    margin: auto;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-form {
-    margin-bottom: 20px;
-}
-
-input[type="text"] {
+.add-form input[type="text"] {
+    width: 70%;
     padding: 8px;
-    width: 200px;
     margin-right: 10px;
 }
 
-button {
+.add-btn {
     padding: 8px 12px;
+    background-color: #28a745;
+    color: #fff;
     border: none;
-    border-radius: 4px;
     cursor: pointer;
-    color: white;
+    border-radius: 4px;
 }
 
-.btn-add {
-    background-color: #28a745; /* vert */
+.add-btn:hover {
+    background-color: #218838;
 }
 
-.btn-edit {
-    background-color: #007bff; /* bleu */
-}
-
-.btn-delete {
-    background-color: #dc3545; /* rouge */
-}
-
-ul {
+.person-list {
     list-style: none;
     padding: 0;
+    margin-top: 20px;
 }
 
-li {
-    background: #fafafa;
-    padding: 10px;
-    margin-bottom: 8px;
+.person-list li {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-radius: 4px;
-}
-
-.actions {
-    display: flex;
-    gap: 5px;
+    padding: 8px 0;
+    border-bottom: 1px solid #ddd;
 }
 
 .edit-form {
     display: flex;
-    gap: 5px;
+    align-items: center;
+    width: 100%;
 }
+
+.person-name {
+    flex: 1;
+}
+
+.edit-input {
+    display: none;
+    flex: 1;
+    padding: 6px;
+    margin-right: 10px;
+}
+
+.edit-btn, .apply-btn, .delete-btn {
+    margin-left: 5px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    color: #fff;
+}
+
+.edit-btn {
+    background-color: #007bff;
+}
+
+.apply-btn {
+    display: none;
+    background-color: #007bff;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+}
+

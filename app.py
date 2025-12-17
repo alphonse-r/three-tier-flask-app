@@ -1,9 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for
 import MySQLdb
 import os
-import time
 
-# Config DB depuis les variables d'environnement
+# Infos DB depuis les variables d'environnement
 DB_HOST = os.environ.get("DB_HOST", "localhost")
 DB_USER = os.environ.get("DB_USER", "flaskuser")
 DB_PASSWORD = os.environ.get("DB_PASSWORD", "flaskpass")
@@ -19,20 +18,7 @@ def get_db_connection():
         db=DB_NAME
     )
 
-def wait_for_db():
-    """Attendre que MySQL soit prêt avant de lancer l'application"""
-    while True:
-        try:
-            conn = get_db_connection()
-            conn.close()
-            print("MySQL est prêt !")
-            break
-        except MySQLdb.OperationalError:
-            print("Attente de MySQL...")
-            time.sleep(2)
-
 def create_table_if_not_exists():
-    """Créer la table person si elle n'existe pas"""
     conn = get_db_connection()
     cur = conn.cursor()
     cur.execute("""
@@ -45,6 +31,8 @@ def create_table_if_not_exists():
     cur.close()
     conn.close()
 
+# Crée la table si elle n'existe pas au démarrage
+create_table_if_not_exists()
 
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -52,7 +40,7 @@ def index():
     cur = conn.cursor()
 
     # Ajouter une personne
-    if request.method == "POST":
+    if request.method == "POST" and request.form.get("action") == "add":
         name = request.form.get("name")
         if name:
             cur.execute("INSERT INTO person (name) VALUES (%s)", (name,))
@@ -67,7 +55,6 @@ def index():
 
     return render_template("index.html", persons=persons)
 
-
 @app.route("/delete/<int:id>")
 def delete_person(id):
     conn = get_db_connection()
@@ -78,25 +65,21 @@ def delete_person(id):
     conn.close()
     return redirect(url_for("index"))
 
-
 @app.route("/edit/<int:id>", methods=["POST"])
 def edit_person(id):
     new_name = request.form.get("name")
-    conn = get_db_connection()
-    cur = conn.cursor()
-    cur.execute("UPDATE person SET name = %s WHERE id = %s", (new_name, id))
-    conn.commit()
-    cur.close()
-    conn.close()
+    if new_name:
+        conn = get_db_connection()
+        cur = conn.cursor()
+        cur.execute("UPDATE person SET name = %s WHERE id = %s", (new_name, id))
+        conn.commit()
+        cur.close()
+        conn.close()
     return redirect(url_for("index"))
-
 
 @app.route("/health")
 def health():
     return "OK", 200
 
-
 if __name__ == "__main__":
-    wait_for_db()              # Attendre MySQL
-    create_table_if_not_exists()  # Créer table si nécessaire
     app.run(host="0.0.0.0", port=5000)

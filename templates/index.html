@@ -3,47 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <title>Gestion des personnes</title>
-
-    <!-- Charger le CSS depuis le dossier static -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+    <div class="container">
+        <h1>Liste des personnes</h1>
 
-<div class="container">
+        <!-- Formulaire d'ajout -->
+        <form method="POST" class="add-form">
+            <input type="text" name="name" placeholder="Nom à ajouter" required>
+            <input type="hidden" name="action" value="add">
+            <button type="submit" class="add-btn">Ajouter</button>
+        </form>
 
-    <h2>Ajouter une personne</h2>
-
-    <form method="POST">
-        <input type="text" name="name" placeholder="Nom" required>
-        <button type="submit" class="btn-add">Ajouter</button>
-    </form>
-
-    <hr>
-
-    <h2>Liste des personnes</h2>
-
-    <ul>
-        {% for person in persons %}
-        <li>
-            <strong>{{ person[1] }}</strong>
-
-            <div class="actions">
-                <!-- Modifier -->
-                <form action="/edit/{{ person[0] }}" method="POST" class="edit-form">
-                    <input type="text" name="name" placeholder="Nouveau nom" required>
-                    <button type="submit" class="btn-edit">Modifier</button>
+        <ul class="person-list">
+            {% for person in persons %}
+            <li>
+                <form method="POST" action="{{ url_for('edit_person', id=person[0]) }}" class="edit-form">
+                    <span class="person-name">{{ person[1] }}</span>
+                    <input type="text" name="name" value="{{ person[1] }}" class="edit-input">
+                    <button type="button" class="edit-btn">Modifier</button>
+                    <button type="submit" class="apply-btn">Appliquer</button>
+                    <a href="{{ url_for('delete_person', id=person[0]) }}" class="delete-btn">Supprimer</a>
                 </form>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
 
-                <!-- Supprimer -->
-                <a href="/delete/{{ person[0] }}">
-                    <button class="btn-delete">Supprimer</button>
-                </a>
-            </div>
-        </li>
-        {% endfor %}
-    </ul>
-
-</div>
-
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

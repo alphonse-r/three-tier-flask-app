@@ -6,7 +6,7 @@ services:
       MYSQL_DATABASE: "devops"
       MYSQL_USER: "flaskuser"
       MYSQL_PASSWORD: "flaskpass"
-      MYSQL_ROOT_PASSWORD: "root" # root pour administration, pas pour Flask
+      MYSQL_ROOT_PASSWORD: "root"
     ports:
       - "3306:3306"
     volumes:
@@ -21,7 +21,7 @@ services:
 
   flask:
     build: .
-    container_name: tree-tier-flask-app
+    container_name: three-tier-flask-app
     ports:
       - "5000:5000"
     environment:

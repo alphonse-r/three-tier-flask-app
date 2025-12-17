@@ -1,21 +1,18 @@
-FROM python:3.11-slim
+FROM python:3.9-alpine
 
 WORKDIR /two-tier-app
 
-# Dépendances système pour mysqlclient
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    default-libmysqlclient-dev \
-    gcc \
-    && rm -rf /var/lib/apt/lists/*
-
+# Copier les dépendances Python
 COPY requirements.txt .
 
-RUN pip install --no-cache-dir -r requirements.txt
+# Installer gcc et dépendances pour MySQL
+RUN apk add --no-cache gcc musl-dev mariadb-connector-c-dev \
+    && pip install --no-cache-dir -r requirements.txt
 
+# Copier tout le projet (app.py, templates/, static/)
 COPY . .
 
 EXPOSE 5000
 
-CMD ["python", "app.py"]
+CMD ["python", "-u", "app.py"]
 
