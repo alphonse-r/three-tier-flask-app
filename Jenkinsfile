@@ -20,16 +20,4 @@ pipeline {
         }
     }
 
-    post {
-        always {
-            // Affiche l'état des containers après déploiement
-            sh 'docker compose ps'
-        }
-        success {
-            echo 'Déploiement réussi !'
-        }
-        failure {
-            echo 'Erreur pendant le déploiement'
-        }
-    }
 }
