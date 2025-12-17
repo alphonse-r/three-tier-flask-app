@@ -48,7 +48,11 @@ sudo apt update && sudo apt upgrade -y
 ### Installer Git, Docker et Docker Compose :
 ```bash
 sudo apt install git
+```
+```bash
 curl -fsSL https://get.docker.com -o get-docker.sh
+```
+```bash
 sudo sh get-docker.sh
 ```
 ### Ajouter l'utilisateur dans groupe Docker pour executer les commandes docker sans sudo :
